@@ -16,27 +16,7 @@ class PropertyController extends Controller
     {
 
 
-        $request->validate(
-            [
 
-               'property_title'=>'required',
-               'appartment_type_id'=>'required',
-
-               'apartment_category_id'=>'required',
-               'price'=>'required|decimal',
-               'phone'=>'required|regex:/^[0-9\-\(\) ]+$/',
-        'email'=>'required|email'
-               //''=>'required',
-               //''=>'required',
-               //''=>'required',
-               //''=>'required',
-               //''=>'required',
-               //''=>'required',
-               //''=>'required'
-            ],
-            ['required'=>'You must fill the field with a proper information']
-            //['image.required'=>'A valid image has be uploaded']
-            );
 
 
         $data=new Property();
@@ -51,19 +31,19 @@ class PropertyController extends Controller
         $data->email=$request->email;
         $data->city_id=$request->city_id;
         $data->address=$request->address;
-        //$imageName = time().'.'.$request->images->extension();
-        //$request->images->move(public_path('backend/img'), $imageName);
-        //$data->images=$imageName;
+       $imageName = time().'.'.$request->images->extension();
+        $request->images->move(public_path('backend/img'), $imageName);
+        $data->images=$imageName;
 
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
+        //if ($request->hasFile('images')) {
+            //foreach ($request->file('images') as $image) {
                 // Store the image in the 'public/images' directory
-                $imagePath = $image->store('images', 'public');
+                //$imagePath = $image->store('images', 'public');
 
                 // Save the path in the database or do something else with it
                 // Example: Image::create(['path' => $imagePath]);
-            }
-        }
+           // }
+        //}
 
 
         $data->area=$request->area;
@@ -84,4 +64,7 @@ class PropertyController extends Controller
         return redirect('/add-listing')->with('status','Property is posted successfully' );
 
     }
+
+
+
 }

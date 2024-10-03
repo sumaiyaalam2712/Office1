@@ -172,11 +172,13 @@
                                     </div>
                                     <div class="user-dasboard-menu faq-nav ">
                                         <ul>
-                                            <li><a href="dashboard.html"> Dashboard</a></li>
-                                            <li><a href="dashboard-listing.html"> Your Advertisements </a></li>
-                                            <li><a href="dashboard-requests.html"  class="act-scrlink"> Your  Requests <span>6</span> </a></li>
-                                            <li><a href="add-listing.html"> Add New Propperty </a></li>
-                                            <li><a href="dashboard-editprofile.html">  Edit profile</a></li>
+                                            <li><a href="{{route('dashboard')}}"> Dashboard</a></li>
+                                            <li><a href=""> Your Advertisements </a></li>
+                                            <li><a href="{{route('ShowRequest.get')}}"> Your Requests <span>6</span> </a>
+                                            </li>
+                                            <li><a href="{{route('add-listing')}}"> Add New Propperty </a></li>
+                                            <li><a href="{{route('Profile.index')}}" class="act-scrlink"> Edit
+                                                    profile</a></li>
                                         </ul>
                                         <a href="index.html" class="hum_log-out_btn"><i class="fa-light fa-power-off"></i> Log Out  </a>
                                     </div>

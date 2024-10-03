@@ -1,5 +1,15 @@
 @extends('backend.app')
 @section('content')
+@if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
         {{-- <h4 class="py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Horizontal Layouts</h4> --}}
@@ -14,14 +24,13 @@
                     </div>
                     <div class="card-body">
 
-                        <form method="POST" action="{{ route('all-cities.update', $data->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="/create-apartment-category" enctype="multipart/form-data">
                             @csrf
-
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="name">City</label>
+                                <label class="col-sm-2 col-form-label" for="name">Apartment Category</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                        id="name" name="name" value="{{ old('name', $data->name) }}" />
+                                        id="name" name="name" value="{{ old('name') }}" />
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -31,7 +40,7 @@
                             </div>
                             <div class="row justify-content-end">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
                             </div>
                         </form>
@@ -40,5 +49,5 @@
             </div>
         </div>
     </div>
-    <!-- / Content --
-@endsection
+
+        @endsection

@@ -179,15 +179,15 @@
                                         </div>
                                         <div class="user-dasboard-menu faq-nav ">
                                             <ul>
-                                                <li><a href="dashboard.html"> Dashboard</a></li>
-                                                <li><a href="dashboard-listing.html"> Your Advertisements </a></li>
-                                                <li><a href="dashboard-requests.html"> Your Requests <span>6</span> </a>
+                                                <li><a href="{{route('dashboard')}}"> Dashboard</a></li>
+                                                <li><a href=""> Your Advertisements </a></li>
+                                                <li><a href="{{route('ShowRequest.get')}}"> Your Requests <span>6</span> </a>
                                                 </li>
-                                                <li><a href="add-listing.html"> Add New Propperty </a></li>
-                                                <li><a href="dashboard-editprofile.html" class="act-scrlink"> Edit
+                                                <li><a href="{{route('add-listing')}}"> Add New Propperty </a></li>
+                                                <li><a href="{{route('Profile.index')}}" class="act-scrlink"> Edit
                                                         profile</a></li>
                                             </ul>
-                                            <a href="index.html" class="hum_log-out_btn"><i
+                                            <a href="" class="hum_log-out_btn"><i
                                                     class="fa-light fa-power-off"></i> Log Out </a>
                                         </div>
                                     </div>
@@ -219,9 +219,11 @@
                                             <div class="dasboard-content-item">
                                                 <div class="dashboard-widget-title-single">Personal Info</div>
 
-                                                <form action="/edit-info" method="POST" enctype="multipart/form-data">
+                                                <form action="/edit-info" method="POST">
                                                     @csrf
                                                     <div class="custom-form">
+
+
                                                         <!-- listsearch-input-item -->
                                                         <div class="cs-intputwrap">
                                                             <i class="fa-light fa-user"></i>
@@ -253,27 +255,35 @@
                                                         <div class="cs-intputwrap">
                                                             <textarea name="bio" id="bio" cols="40" rows="3" placeholder="About Text:"></textarea>
                                                         </div>
+                                                    </div>
                                                         <button class="commentssubmit" type="submit">Update</button>
-                                                </form>
-                                            </div>
+
+
+                                        </form>
                                         </div>
                                         <!--dasboard-content-item end-->
                                     </div>
+
                                     <div class="col-lg-6">
+                                        <form action="/edit-photo" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
                                         <div class="edit-profile-photo">
                                             <div class="edit-profile-photo_cur">
-                                                <img src="images/avatar/1.jpg" alt="">
+                                                <img src="{{asset('backend/img/'.$data['profile_picture'])}}" alt="NO image">
                                             </div>
                                             <div class="change-photo-btn">
                                                 <div class="photoUpload">
                                                     <span> Upload New Photo</span>
-                                                    <input type="file" class="upload">
+                                                    <input type="file" class="upload" name="profile_picture">
                                                 </div>
                                             </div>
                                             <div class="abs_bg"></div>
                                             <div class="remove_phav tolt" data-microtip-position="left"
-                                                data-tooltip="Remove Photo"><i class="fa-light fa-trash"></i></div>
+                                                data-tooltip="Remove Photo"><a href="{{url('/delete-photo/{id}')}}"><i class="fa-light fa-trash"></i></a></div>
                                         </div>
+                                        <button class="commentssubmit" type="submit">Update Profile Picture</button>
+                                    </form>
                                         <!--dasboard-content-item-->
                                         <div class="dasboard-content-item">
                                             <div class="dashboard-widget-title-single">Your Socials Links</div>
@@ -322,6 +332,9 @@
                                 <!--dasboard-content-item-->
                                 <div class="dasboard-content-item" style="margin-top: 20px">
                                     <div class="dashboard-widget-title-single">Change Password</div>
+                                    <form action="/edit-socialmedia" method="POST"
+                                                enctype="multipart/form-data">
+                                                @csrf
                                     <div class="custom-form">
                                         <!-- listsearch-input-item -->
                                         <div class="cs-intputwrap pass-input-wrap">

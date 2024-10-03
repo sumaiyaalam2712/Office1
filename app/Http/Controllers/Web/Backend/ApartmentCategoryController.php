@@ -5,14 +5,14 @@ use Illuminate\Support\Facades\File;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\AllCity;
+use App\Models\ApartmentCategory;
 
-class AllCityController extends Controller
+class ApartmentCategoryController extends Controller
 {
 
     public function index()
     {
-        return view('backend.layout.city.create-city');
+        return view('backend.layout.category.create-apartment-category');
     }
 
 
@@ -32,25 +32,25 @@ class AllCityController extends Controller
 
 
 
-            $data=new AllCity();
+            $data=new ApartmentCategory();
 
             $data->name=$request->name;
 
             $data->save();
-            return redirect('/show-city')->with('status','Form is submitted successfully' );
+            return redirect('/show-apartment-category')->with('status','Form is submitted successfully' );
          }
 
 
 
 public function get(){
-    $data=AllCity::all();
-    return view('backend.layout.city.show-city',['infos'=>$data]);
+    $data=ApartmentCategory::all();
+    return view('backend.layout.category.show-apartment-category',['infos'=>$data]);
   }
 
 
   public function delete($id)
   {
-     $data=AllCity::find($id);
+     $data=ApartmentCategory::find($id);
 
      $data->delete();
      return redirect()->back();
@@ -59,8 +59,8 @@ public function get(){
 
   public function edit($id)
   {
-     $data=AllCity::find($id);
-     return view('backend.layout.city.update-city',['datas'=>$data]);
+     $data=ApartmentCategory::find($id);
+     return view('backend.layout.update_apartment_category',['datas'=>$data]);
   }
 
 
@@ -77,13 +77,13 @@ public function get(){
                 );
 
 
-            $data=AllCity::find($request->id);
+            $data=ApartmentCategory::find($request->id);
             $data->id=$request->id;
 
             $data->name=$request->name;
 
             $data->save();
-            return redirect('/show-city')->with('status','Form is updated successfully' );
+            return redirect('/show-apartment-category')->with('status','Form is updated successfully' );
          }
 
 

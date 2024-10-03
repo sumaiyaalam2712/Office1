@@ -1,5 +1,7 @@
 @extends('frontend.app')
 @section('content')
+
+
     <div class="content">
         <!--container-->
         <div class="content">
@@ -28,9 +30,11 @@
                                 <div class="db-container">
                                     <!--dasboard-content-item-->
                                     <div class="dasboard-content-item">
+
                                         <div class="dashboard-widget-title-single">
                                             Basic Informations
                                         </div>
+                                    </div>
 
 
 
@@ -39,8 +43,10 @@
                                         <div class="custom-form">
 
                                                 <div class="row">
-                                                    <input type="text"
+                                                    <input type="hidden"
                                                     name="user_id" value="{{$user}}" >
+                                                </div>
+                                                <div class="row">
                                                     <div class="col-lg-6">
                                                         <!-- listsearch-input-item -->
                                                         <div class="cs-intputwrap">
@@ -119,7 +125,6 @@
                                                     </div>
                                                 </div>
 
-
                                     <!--dasboard-content-item end-->
                                     <!--dasboard-content-item-->
                                     <div class="dasboard-content-item" style="margin-top: 20px">
@@ -171,8 +176,9 @@
                                                     <!-- listsearch-input-item -->
                                                 </div>
                                             </div>
+
+
                                         </div>
-                                    </div>
                                     <!--dasboard-content-item end-->
                                     <!--dasboard-content-item-->
                                     <div class="dasboard-content-item" style="margin-top: 20px">
@@ -190,13 +196,13 @@
                                                                 Click here or drop files to upload</span>
                                                             <div class="photoUpload-files fl-wrap"></div>
                                                         </div>
-                                                        <input type="file" class="upload" name="images[]" multiple/>
+                                                        <input type="file" class="upload dropify" name="images"/>
 
                                                     <!-- listsearch-input-item -->
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+
                                     <!--dasboard-content-item end-->
                                     <!--dasboard-content-item-->
                                     <div class="dasboard-content-item" style="margin-top: 20px">
@@ -204,8 +210,7 @@
                                             Property Details
                                         </div>
 
-                                            <div class="row">
-                                                <div class="col-lg-6">
+
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <!-- listsearch-input-item -->
@@ -262,7 +267,7 @@
                                                             <!-- listsearch-input-item -->
                                                         </div>
                                                     </div>
-                                                </div>
+
                                                 <div class="col-lg-6">
                                                     <div class="cs-intputwrap">
                                                         <textarea name="details" id="details" cols="40" rows="3" placeholder="Property Details:"></textarea>
@@ -355,26 +360,27 @@
                                                         <div class="photoUpload-files fl-wrap"></div>
                                                     </div>
                                                     <input type="file" class="upload" name="brochure" />
-                                                    <input type="submit" value="hjkkjljlklk"style="margin-top: 10px">
+                                                </div>
+                                            </div>
+                                        </div>
+                                                    <input type="submit" value="Save Your Property"style="margin-top: 10px">
+
 
 
                                                     </form>
                                                     <!--</form>
                                                          listsearch-input-item -->
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                    </div>
+                                        </div>
 
 
 
                                     <!--dasboard-content-item end-->
                                 </div>
-                            </div>
+
 
                             <!-- pricing-column end-->
-                        </div>
+
                         <div class="limit-box"></div>
                     </div>
                     <!--boxed-container end-->
@@ -393,4 +399,7 @@
         </div>
         <!-- container end-->
     </div>
+    <script>
+        $('.dropify').dropify();
+    </script>
 @endsection

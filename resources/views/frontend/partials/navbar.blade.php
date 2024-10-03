@@ -29,18 +29,25 @@
                         {{-- <img src="{{ asset('frontend/images/announcer.jpg') }}" alt="User Image"> --}}
                         {{-- <img src="{{ Auth::user()->profile_picture }}" alt="User Image"> --}}
 
-                        <img src="{{ Auth::user()->profile_picture ? asset(Auth::user()->profile_picture) : asset('frontend/images/announcer.jpg') }}" alt="User Image">
 
+                        {{-- <img src="{{ Auth::user()->profile_picture ? asset(Auth::user()->profile_picture) : asset('backend/img/'.Auth::user()->profile_picture) }}" alt="User Image"> --}}
+                        @php
+
+                            $src = auth()->user();
+
+                        @endphp
+
+                        <img src="{{ asset('backend/img/' . $src['profile_picture']) }}">
                     </div>
                     <div class="header-user-menu_wrap">
                         <ul>
                             <li><a href="{{ route('dashboard') }}" class="hum_act">Dashboard</a></li>
-                            <li><a href="{{route('Profile.index')}}">Edit Profile</a></li>
-                            <li><a href="{{route('add-listing')}}">Add Listing</a></li>
+                            <li><a href="{{ route('Profile.index') }}">Edit Profile</a></li>
+                            <li><a href="{{ route('add-listing') }}">Add Listing</a></li>
 
                         </ul>
                         <a href="{{ route('logout') }}" class="hum_log-out_btn"
-                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="fa-light fa-power-off"></i> Log Out
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -80,8 +87,9 @@
                                 <div class="price-range-wrap">
                                     <label>Price Range</label>
                                     <div class="price-rage-item">
-                                        <input type="text" class="price-range-double" data-min="100" data-max="100000"
-                                               name="price-range1" data-step="1" value="1" data-prefix="$">
+                                        <input type="text" class="price-range-double" data-min="100"
+                                            data-max="100000" name="price-range1" data-step="1" value="1"
+                                            data-prefix="$">
                                     </div>
                                 </div>
                             </div>
@@ -95,4 +103,3 @@
         </div>
     </div>
 </header>
-

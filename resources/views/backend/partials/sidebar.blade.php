@@ -76,27 +76,27 @@
         </li>
 
 
-        <li class="menu-item {{ Request::routeIs('category.index') ? 'active' : ' ' }}">
-            <a href="{{ route('category.index') }}" class="menu-link">
+        <li class="menu-item {{ Request::routeIs('ShowCategory.get') ? 'active' : ' ' }}">
+            <a href="{{ route('ShowCategory.get') }}" class="menu-link">
                 <i class="menu-icon bi bi-buildings-fill"></i>
-                <div data-i18n="Dashboards"> Property Category</div>
+                <div data-i18n="Dashboards"> Apartment Category</div>
 
             </a>
         </li>
 
 
-        <li class="menu-item {{ Request::routeIs('appartment-type.index') ? 'active' : ' ' }}">
-            <a href="{{ route('appartment-type.index') }}" class="menu-link">
+        <li class="menu-item {{ Request::routeIs('ShowType.get') ? 'active' : ' ' }}">
+            <a href="{{ route('ShowType.get') }}" class="menu-link">
                 <i class="menu-icon bi bi-list-columns-reverse"></i>
-                <div data-i18n="Dashboards">Appartment Type</div>
+                <div data-i18n="Dashboards">Property Type</div>
 
             </a>
         </li>
 
-        <li class="menu-item {{ Request::routeIs('all-cities.index') ? 'active' : ' ' }}">
-            <a href="{{ route('all-cities.index') }}" class="menu-link">
+        <li class="menu-item {{ Request::routeIs('ShowCity.get') ? 'active' : ' ' }}">
+            <a href="{{ route('ShowCity.get') }}" class="menu-link">
                 <i class="menu-icon bi bi-mailbox-flag"></i>
-                <div data-i18n="Dashboards">All City</div>
+                <div data-i18n="Dashboards">City</div>
 
             </a>
         </li>
@@ -108,21 +108,6 @@
             </a>
         </li>
 
-        <li class="menu-item {{ Request::routeIs('amenities.index') ? 'active' : ' ' }}">
-            <a href="{{ route('amenities.index') }}" class="menu-link">
-                <i class="menu-icon bi bi-houses-fill"></i>
-                <div data-i18n="Dashboards">Amenity</div>
-
-            </a>
-        </li>
-
-        <li class="menu-item {{ Request::routeIs('ShowRequest.get') ? 'active' : ' ' }}">
-            <a href="{{ route('ShowRequest.get') }}" class="menu-link">
-                <i class="menu-icon bi bi-houses-fill"></i>
-                <div data-i18n="Dashboards">Sent Request</div>
-
-            </a>
-        </li>
 
 
         {{-- <li
