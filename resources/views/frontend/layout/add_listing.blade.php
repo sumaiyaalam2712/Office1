@@ -196,7 +196,7 @@
                                                                 Click here or drop files to upload</span>
                                                             <div class="photoUpload-files fl-wrap"></div>
                                                         </div>
-                                                        <input type="file" class="upload dropify" name="images"/>
+                                                        <input type="file" class="upload" name="images"/>
 
                                                     <!-- listsearch-input-item -->
                                                 </div>

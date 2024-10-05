@@ -50,7 +50,7 @@
     <div class="container">
       <!--breadcrumbs-list-->
       <div class="breadcrumbs-list bl_flat">
-        <a href="#">Home</a><a href="#">Advance Search</a>
+        <a href="{{route('homepage')}}">Home</a><a href="#">Advance Search</a>
         <div class="breadcrumbs-list_dec">
           <i class="fa-thin fa-arrow-up"></i>
         </div>
@@ -76,6 +76,9 @@
                 ><span> Advance Search Filters</span>
               </div>
             </div>
+
+
+            <form action="{{route('advance-search')}}" method="POST">
             <div class="custom-form">
               <div class="row">
                 <!-- listsearch-input-item -->
@@ -85,7 +88,7 @@
                     <input
                       type="text"
                       placeholder="Where to go"
-                      value=""
+                      name="address"
                     />
                   </div>
                 </div>
@@ -98,7 +101,7 @@
                       type="text"
                       class="dateInput"
                       placeholder="Arrival Date"
-                      value=""
+                      name=""
                     />
                   </div>
                 </div>
@@ -166,9 +169,9 @@
                           class="price-range-double"
                           data-min="100"
                           data-max="100000"
-                          name="price-range1"
+                          name="price"
                           data-step="1"
-                          value="1"
+
                           data-prefix="$"
                         />
                       </div>
@@ -189,7 +192,7 @@
                           data-max="1000"
                           name="price-range2"
                           data-step="1"
-                          value="1"
+
                           data-prefix=""
                         />
                       </div>
@@ -302,7 +305,7 @@
                 <!-- listsearch-input-item -->
                 <!-- listsearch-input-item -->
                 <div class="col-lg-2">
-                  <button
+                  <button type="submit"
                     onclick="window.location.href='listing.html'"
                     class="commentssubmit commentssubmit_fw"
                   >
@@ -312,6 +315,7 @@
                 <!-- listsearch-input-item -->
               </div>
             </div>
+        </form>
           </div>
           <!-- list-searh-input-wrap end-->
           <div class="mob-filter-overlay cmf fs-wrapper"></div>
@@ -320,23 +324,25 @@
             <!-- list-main-wrap-title-->
             <div class="list-main-wrap-title">
               <h2>
-               Popular Properties
+               Properties
               </h2>
             </div>
             <!-- list-main-wrap-title end-->
           </div>
           <!-- list-main-wrap-header end-->
           <!--listing-item-container-->
+
+          @foreach($data as $item)
           <div class="listing-item-container three-columns-grid">
             <!-- listing-item -->
             <div class="listing-item">
               <div class="geodir-category-listing">
                 <div class="geodir-category-img">
                   <a
-                    href="listing-single.html"
+                    href="#"
                     class="geodir-category-img_item"
                   >
-                    <div class="bg" data-bg="{{asset('frontend/images/all/properties5.jpg')}}"></div>
+                    <div class="bg" data-bg="{{asset('backend/img/'.$item['images'])}}"></div>
                     <div class="overlay"></div>
                   </a>
                   <div class="geodir-category-location">
@@ -347,14 +353,10 @@
                       data-newlongitude="-73.99726866"
                       data-microtip-position="top"
                       data-tooltip="On the map"
-                      ><i class="fas fa-map-marker-alt"></i> 40 Journal
-                      Square , NJ, USA</a
+                      ><i class="fas fa-map-marker-alt"></i> {{$item['address']}}</a
                     >
                   </div>
-                  <ul class="list-single-opt_header_cat">
-                    <li><a href="#" class="cat-opt">Sale</a></li>
-                    <li><a href="#" class="cat-opt">House</a></li>
-                  </ul>
+
                   <a
                     href="#"
                     class="geodir_save-btn tolt"
@@ -368,17 +370,14 @@
                 </div>
                 <div class="geodir-category-content">
                   <h3>
-                    <a href="listing-single.html"
-                      >Gorgeous House For Sale</a
-                    >
+                    <a href="{{route('single-property',['id'=>$item->id])}}"
+                      >{{$item['property_title']}}</a>
                   </h3>
                   <div class="geodir-category-content_price">
-                    $ 500,000
+                    $ {{$item['price']}}
                   </div>
                   <p>
-                    Maecenas in pulvinar neque. Nulla finibus lobortis
-                    pulvinar. Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit. Donec a consectetur nulla.
+                    {{$item['details']}}
                   </p>
                   <div class="geodir-category-content-details">
                     <ul>
@@ -410,164 +409,13 @@
             </div>
             <!-- listing-item end-->
             <!-- listing-item -->
-            <div class="listing-item">
-              <div class="geodir-category-listing">
-                <div class="geodir-category-img">
-                  <a
-                    href="listing-single.html"
-                    class="geodir-category-img_item"
-                  >
-                    <div class="bg" data-bg="{{asset('frontend/images/all/properties4.jpg')}}"></div>
-                    <div class="overlay"></div>
-                  </a>
-                  <div class="geodir-category-location">
-                    <a
-                      href="#4"
-                      class="map-item tolt single-map-item"
-                      data-newlatitude="40.88496706"
-                      data-newlongitude="-73.88191222"
-                      data-microtip-position="top"
-                      data-tooltip="On the map"
-                      ><i class="fas fa-map-marker-alt"></i> 70 Bright St,
-                      Jersey City, NJ USA</a
-                    >
-                  </div>
-                  <ul class="list-single-opt_header_cat">
-                    <li><a href="#" class="cat-opt">Rent</a></li>
-                    <li><a href="#" class="cat-opt">Apartment</a></li>
-                  </ul>
-                  <a
-                    href="#"
-                    class="geodir_save-btn tolt"
-                    data-microtip-position="left"
-                    data-tooltip="Save"
-                    ><span><i class="fal fa-heart"></i></span
-                  ></a>
-                  <div class="geodir-category-listing_media-list">
-                    <span><i class="fas fa-camera"></i> 5</span>
-                  </div>
-                </div>
-                <div class="geodir-category-content">
-                  <h3>
-                    <a href="listing-single.html">Kayak Point House</a>
-                  </h3>
-                  <div class="geodir-category-content_price">
-                    $ 1500 / per month
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit. Maecenas in pulvinar neque. Nulla finibus
-                    lobortis pulvinar. Donec a consectetur nulla.
-                  </p>
-                  <div class="geodir-category-content-details">
-                    <ul>
-                      <li>
-                        <i class="fa-light fa-bed"></i><span>1</span>
-                      </li>
-                      <li>
-                        <i class="fa-light fa-bath"></i><span>1</span>
-                      </li>
-                      <li>
-                        <i class="fa-light fa-chart-area"></i
-                        ><span>70 ft2</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="geodir-category-footer">
-                  <a href="agent-single.html" class="gcf-company"
-                    ><img src="frontend/images/announcer.jpg" alt="" /><span
-                      >By Andy Sposty</span
-                    ></a
-                  >
-                  <a href="listing-single.html" class="gid_link"
-                    ><span>View Details</span>
-                    <i class="fa-solid fa-caret-right"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
+
             <!-- listing-item end-->
             <!-- listing-item -->
-            <div class="listing-item">
-              <div class="geodir-category-listing">
-                <div class="geodir-category-img">
-                  <a
-                    href="listing-single.html"
-                    class="geodir-category-img_item"
-                  >
-                    <div class="bg" data-bg="{{asset('frontend/images/all/properties1.jpg')}}"></div>
-                    <div class="overlay"></div>
-                  </a>
-                  <div class="geodir-category-location">
-                    <a
-                      href="#4"
-                      class="map-item tolt single-map-item"
-                      data-newlatitude="40.94982541"
-                      data-newlongitude="-73.84357452"
-                      data-microtip-position="top"
-                      data-tooltip="On the map"
-                      ><i class="fas fa-map-marker-alt"></i> W 85th St,
-                      New York, USA
-                    </a>
-                  </div>
-                  <ul class="list-single-opt_header_cat">
-                    <li><a href="#" class="cat-opt">Sale</a></li>
-                    <li><a href="#" class="cat-opt">Apartment</a></li>
-                  </ul>
-                  <a
-                    href="#"
-                    class="geodir_save-btn tolt"
-                    data-microtip-position="left"
-                    data-tooltip="Save"
-                    ><span><i class="fal fa-heart"></i></span
-                  ></a>
-                  <div class="geodir-category-listing_media-list">
-                    <span><i class="fas fa-camera"></i> 7</span>
-                  </div>
-                </div>
-                <div class="geodir-category-content">
-                  <h3>
-                    <a href="listing-single.html">Luxury Family Home</a>
-                  </h3>
-                  <div class="geodir-category-content_price">
-                    $ 450,000
-                  </div>
-                  <p>
-                    Maecenas in pulvinar neque. Nulla finibus lobortis
-                    pulvinar. Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit. Donec a consectetur nulla.
-                  </p>
-                  <div class="geodir-category-content-details">
-                    <ul>
-                      <li>
-                        <i class="fa-light fa-bed"></i><span>2</span>
-                      </li>
-                      <li>
-                        <i class="fa-light fa-bath"></i><span>1</span>
-                      </li>
-                      <li>
-                        <i class="fa-light fa-chart-area"></i
-                        ><span>150 ft2</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="geodir-category-footer">
-                  <a href="agent-single.html" class="gcf-company"
-                    ><img src="{{asset('frontend/images/announcer.jpg')}}" alt="" /><span
-                      >By Anna Lips</span
-                    ></a
-                  >
-                  <a href="listing-single.html" class="gid_link"
-                    ><span>View Details</span>
-                    <i class="fa-solid fa-caret-right"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
+
             <!-- listing-item end-->
           </div>
+          @endforeach
         </div>
         <!--boxed-container end-->
       </div>

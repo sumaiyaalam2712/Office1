@@ -12,6 +12,7 @@ use App\Http\Controllers\Web\Backend\PropertyController;
 use App\Http\Controllers\Web\Backend\AllCityController;
 use App\Http\Controllers\Web\Backend\ApartmentCategoryController;
 use App\Http\Controllers\Web\Backend\AppartmentTypeController;
+use App\Http\Controllers\Web\Backend\SearchController;
 
 
 //!Route for HomeController
@@ -71,9 +72,6 @@ Route::get('/create_banner', [BannerController::class, 'index'])->name('CreateBa
  Route::post('/search_request', [RequestController::class, 'ssearch'])->name('SearchRequest.ssearch');
  Route::get('/search_request', [RequestController::class, 'ssearch']);
 
- //Route::get('/update_request/{id}', [RequestController::class, 'edit']);
- //Route::post('/update_request', [RequestController::class, 'update']);
- //Route::get('/delete_request/{id}', [RequestController::class, 'delete']);
 
 
 
@@ -91,4 +89,8 @@ Route::get('/create_banner', [BannerController::class, 'index'])->name('CreateBa
 
 
  Route::post('/create_property', [PropertyController::class, 'save']);
+
+
+
+ Route::post('/advence-search', [SearchController::class,'search'])->name('advance-search');
 

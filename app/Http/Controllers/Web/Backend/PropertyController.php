@@ -15,6 +15,37 @@ class PropertyController extends Controller
     public function save(Request $request)
     {
 
+        $request->validate(
+            [
+
+               'property_title'=>'required',
+               'appartment_type_id'=>'required',
+
+               'apartment_category_id'=>'required',
+               'price'=>'required|numeric',
+               'service_type_id'=>'required',
+               'phone'=>'required|regex:/^[0-9\-\(\) ]+$/',
+                'email'=>'required|email',
+               'city_id'=>'required',
+               'address'=>'required',
+               'images'=>'required|image|mimes:jpeg,png,jpg,gif,bmp,tiff,webp,svg,heic,raw,ico',
+               'area'=>'required|integer',
+               'bedroom'=>'required|integer',
+               'bathroom'=>'required|integer',
+               'parking'=>'required',
+               'accommodation'=>'required',
+               'website'=>'required',
+               'details'=>'required',
+               'amenities'=>'required',
+               'brochure'=>'required',
+               'keywords'=>'required'
+            ],
+            ['required'=>'You must fill the field with a proper information',
+            'integer'=>'The value has to be in digits',
+            'image'=>'A valid image has to be uploaded',
+            'email' => 'This has to be a valid email address',
+            'regex' => 'The phone number format is invalid']
+            );
 
 
 

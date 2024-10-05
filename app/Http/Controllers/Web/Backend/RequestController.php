@@ -30,6 +30,10 @@ class RequestController extends Controller
 
 
        $data=new Send_request();
+       $data->user_id=$request->user_id;
+       $data->property_id=$request->property_id;
+       $data->property_name=$request->property_name;
+       $data->address=$request->address;
 
        $data->phone=$request->phone;
        $data->name=$request->name;
