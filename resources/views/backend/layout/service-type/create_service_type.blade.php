@@ -18,15 +18,15 @@
         <div class="row">
             <!-- Basic Layout -->
             <div class="col-xxl">
-                <div class="card mb-4">
+                <div class="mb-4 card">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <h3 class="mb-0"></h3>
                     </div>
                     <div class="card-body">
 
-                        <form method="POST" action="/create_service_type" enctype="multipart/form-data">
+                        <form id="ajax-form" action="/create_service_type" enctype="multipart/form-data">
                             @csrf
-                            <div class="row mb-3">
+                            <div class="mb-3 row">
                                 <label class="col-sm-2 col-form-label" for="name">Service Type</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control @error('name') is-invalid @enderror"
@@ -49,5 +49,65 @@
             </div>
         </div>
     </div>
+
+
+    <script type="text/javascript">
+
+
+
+        /*------------------------------------------
+
+        --------------------------------------------
+
+        Form Submit Event
+
+        --------------------------------------------
+
+        --------------------------------------------*/
+
+        $('#ajax-form').submit(function(e) {
+
+            e.preventDefault();
+
+
+
+            var url = $(this).attr("action");
+
+            let formData = new FormData(this);
+
+
+
+            $.ajax({
+
+                    type:'POST',
+
+                    url: url,
+
+                    data: formData,
+
+                    contentType: false,
+
+                    processData: false,
+
+                    success: (response) => {
+
+                        alert('Form submitted successfully');
+
+                        location.reload();
+
+                    },
+
+
+
+
+               });
+
+
+
+        });
+
+
+
+    </script>
     <!-- / Content
         @endsection

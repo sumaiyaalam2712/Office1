@@ -34,7 +34,10 @@ class ServiceTypeController extends Controller
             $data->name=$request->name;
             $data->save();
 
-            return redirect('/show_service_type')->with('status','Form submitted successfully');
+
+
+            return response()->json(['success' => 'Post created successfully.']);
+
          }
 
 

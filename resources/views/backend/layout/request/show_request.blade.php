@@ -154,7 +154,7 @@
             </div>
             <!--breadcrumbs-list end-->
             <!--main-content-->
-            <div class="main-content  ms_vir_height">
+            <div class="main-content ms_vir_height">
                 <!--boxed-container-->
                 <div class="boxed-container">
                     <div class="row">
@@ -189,7 +189,7 @@
                         <!-- pricing-column -->
                         <div class="col-lg-9">
                             <div class="dashboard-title">
-                                <div class="dashboard-title-item"><span> Your  Requests <strong>6</strong> </span></div>
+                                <div class="dashboard-title-item"><span> Your  Requests <strong>{{ $count }}</strong> </span></div>
                                 <!--Tariff Plan menu-->
                                 <div class="tfp-det-container">
                                     <div class="db-date"><i class="fa-regular fa-calendar"></i><strong></strong></div>
@@ -227,33 +227,45 @@
                                 <div class="row">
                                     <!-- bookings-item -->
                                     @foreach ($infos as $info)
+                                    @if ($info['user_id'] == auth()->user()->id)
+
                                     <div class="col-lg-6">
                                         <div class="bookings-item">
                                             <div class="bookings-item-header">
                                                 <img src="images/all/thumbnails/1.jpg" alt="">
-                                                <h4>For <a href="listing-single.html" target="_blank">Gorgeous house for sale</a></h4>
+                                                <h4>For <a href="#" target="_blank">{{ $info['property_name'] }}</a></h4>
                                                 <span class="new-bookmark">New</span>
                                             </div>
                                             <div class="bookings-item-content">
 
                                                 <ul>
-                                                    <li>Name: <span>{{$info['name']}}</span></li>
-                                                    <li>Phone: <span>{{$info['phone']}}</span></li>
-                                                    <li>Date: <span>{{$info['request_date']}}</span></li>
-                                                    <li>Time: <span>{{$info['request_time']}}</span></li>
-                                                </ul>
+
+
+
+        <li>Name: <span>{{ $info['name'] }}</span></li>
+        <li>Phone: <span>{{ $info['phone'] }}</span></li>
+        <li>Date: <span>{{ $info['request_date'] }}</span></li>
+        <li>Time: <span>{{ $info['request_time'] }}</span></li>
+        <li>Property Name: <span>{{ $info['property_id'] }}</span></li>
+        <li>Property Name: <span>{{ $info['property_name'] }}</span></li>
+        <li>Property Name: <span>{{ $info['address'] }}</span></li>
+
+</ul>
+
 
                                             </div>
                                             <div class="bookings-item-footer">
-                                                <span class="message-date"><i class="fa-regular fa-calendar"></i> 12 May 2024</span>
+                                                <span class="message-date"><i class="fa-regular fa-calendar"></i> {{ $info['created_at'] }}</span>
                                                 <ul>
-                                                    <li><a href="#" class="tolt" data-microtip-position="left" data-tooltip="Call"><i class="fa-regular fa-phone"></i></a></li>
+                                                    <li><a href="{{ url('tel: $info->phone') }}" class="tolt" data-microtip-position="left" data-tooltip="Call"><i class="fa-regular fa-phone"></i></a></li>
                                                     <li><a href="#" class="tolt" data-microtip-position="left" data-tooltip="Delete"><i class="fa-regular fa-trash-can"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
                                     @endforeach
+
                                     <!-- bookings-item end -->
 
                             </div>
@@ -310,7 +322,7 @@
                         <div class="footer-widget">
                             <div class="footer-widget-title">Helpful links</div>
                             <div class="footer-widget-content">
-                                <div class="footer-list footer-box  ">
+                                <div class="footer-list footer-box ">
                                     <ul>
                                         <li><a href="#">Our last News</a></li>
                                         <li><a href="#">Pricing Plans</a></li>
@@ -328,8 +340,8 @@
                         <div class="footer-widget">
                             <div class="footer-widget-title">Our Contacts</div>
                             <div class="footer-widget-content">
-                                <div class="footer-list footer-box  ">
-                                    <ul  class="footer-contacts  ">
+                                <div class="footer-list footer-box ">
+                                    <ul  class="footer-contacts ">
                                         <li><span>Mail :</span><a href="#" target="_blank">yourmail@domain.com</a></li>
                                         <li> <span>Adress :</span><a href="#" target="_blank">USA 27TH Brooklyn NY</a></li>
                                         <li><span>Phone :</span><a href="#">+2(111)123456789</a></li>
@@ -359,7 +371,7 @@
                 <!-- footer-widget-wrap end-->
             </div>
             <div class="footer-bottom">
-                <a href="index.html" class="footer-home_link"><i class="fa-regular  fa-house"></i></a>
+                <a href="index.html" class="footer-home_link"><i class="fa-regular fa-house"></i></a>
                 <div class="copyright"> <span>&#169;Renstate 2024</span> . All rights reserved. </div>
                 <div class="footer-social">
                     <span class="footer-social-title">Follow Us</span>

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Web\Backend;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -45,8 +46,10 @@ class RequestController extends Controller
 
 
     public function get(){
+
+        $count=Send_request::where('user_id',Auth::user()->id)->count('id');
         $data=Send_request::all();
-        return view('backend.layout.request.show_request',['infos'=>$data]);
+        return view('backend.layout.request.show_request',['infos'=>$data,'count'=>$count]);
       }
 
 

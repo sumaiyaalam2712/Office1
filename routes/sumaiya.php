@@ -15,7 +15,7 @@ use App\Http\Controllers\Web\Backend\AppartmentTypeController;
 use App\Http\Controllers\Web\Backend\SearchController;
 
 
-//!Route for HomeController
+//Route for HomeController
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
 
 
@@ -57,7 +57,7 @@ Route::get('/create_banner', [BannerController::class, 'index'])->name('CreateBa
 
 
  Route::get('/create_service_type', [ServiceTypeController::class, 'index'])->name('CreateServiceType.index');
- Route::post('/create_service_type', [ServiceTypeController::class, 'save']);
+ Route::post('/create_service_type', [ServiceTypeController::class, 'save'])->name('CreateServiceType.store');
  Route::get('/show_service_type', [ServiceTypeController::class, 'get'])->name('ShowServiceType.get');
  Route::get('/update_service_type/{id}', [ServiceTypeController::class, 'edit']);
  Route::post('/update_service_type', [ServiceTypeController::class, 'update']);
@@ -94,3 +94,6 @@ Route::get('/create_banner', [BannerController::class, 'index'])->name('CreateBa
 
  Route::post('/advence-search', [SearchController::class,'search'])->name('advance-search');
 
+
+
+Route::view('/datatable-testing','datatable-testing');
