@@ -2,6 +2,10 @@
 
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+
+
 use App\Http\Controllers\Web\Frontend\HomeController;
 use App\Http\Controllers\Web\Backend\BannerController;
 use App\Http\Controllers\Web\Backend\ServiceTypeController;
@@ -97,3 +101,6 @@ Route::get('/create_banner', [BannerController::class, 'index'])->name('CreateBa
 
 
 Route::view('/datatable-testing','datatable-testing');
+
+
+Route::view('/password-reset','password-reset');

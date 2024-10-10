@@ -59,7 +59,7 @@
                                             <label for="check-a">Remember me</label>
                                         </div>
                                         <div class="lost_password">
-                                            <a href="#">Lost Your Password?</a>
+                                            <a href="{{ url('password-reset') }}">Lost Your Password?</a>
                                         </div>
                                         <div class="clearfix"></div>
                                         <button type="submit" class="commentssubmit"> Log In </button>
