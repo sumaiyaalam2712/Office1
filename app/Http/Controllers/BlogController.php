@@ -13,6 +13,7 @@ class BlogController extends Controller
 {
     public function gett()
     {
-        return Blog::find('1')->comments();
+        $data=Blog::find('1')->comments;
+        return response()->json($data);
     }
 }

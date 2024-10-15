@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\VidioController;
 use App\Http\Controllers\ComitController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CourseController;
 
 
 /*
@@ -35,10 +37,18 @@ Route::get('/create-post', [PostController::class, 'index'])->name('index');
  Route::get('/delete-post/{id}',[PostController::class,'delete'])->name('delete');
 
  Route::get('/relation', [UserController::class, 'oneToMany'])->name('relation');
-
-
-
+ Route::get('/many-to-many-relation', [StudentController::class, 'manyToMany']);
  Route::get('/polymorphy', [BlogController::class, 'gett']);
+
+ Route::get('/create-student', [StudentController::class, 'index']);
+ Route::post('/create-student', [StudentController::class, 'save'])->name('save.student');
+
+
+
+ Route::get('/create-course', [CourseController::class, 'index']);
+ Route::post('/create-course', [CourseController::class, 'save'])->name('save.course');
+
+
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

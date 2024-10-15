@@ -13,7 +13,7 @@
             <th>user_id</th>
             <th>title</th>
             <th>description</th>
-            <th>user_id</th>
+
         </tr>
     </thead>
     <tbody>
@@ -23,10 +23,10 @@
 
         <tr>
 
-            <td>{{$item['user_id']}}</td>
-            <td>{{$item['title']}}</td>
-            <td>{{$item['description']}}</td>
-            <td>{{$item['email']}}</td>
+            <td>{{$item->user_id}}</td>
+            <td>{{$item->title}}</td>
+            <td>{{$item->description}}</td>
+
 
 
         </tr>
