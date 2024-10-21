@@ -90,7 +90,7 @@ public function get(){
             $data->title=$request->title;
             $data->description=$request->description;
             $data->save();
-            return redirect()->back()->with('status','Form updated successfully');
+            return redirect('show-post');
          }
 
 

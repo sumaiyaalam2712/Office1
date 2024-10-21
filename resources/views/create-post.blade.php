@@ -46,7 +46,7 @@
                                     <input type="text" class="form-control @error('user_id') is-invalid @enderror"
                                         id="user_id" name="user_id" value="{{ old('user_id') }}" />
                                     @error('user_id')
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
@@ -59,7 +59,7 @@
                                     <input type="text" class="form-control dropify @error('title') is-invalid @enderror"
                                         id="title" name="title" value="{{ old('title') }}" />
                                     @error('title')
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
@@ -72,7 +72,7 @@
                                     <input type="text" class="form-control @error('description') is-invalid @enderror"
                                         id="description" name="description" value="{{ old('description') }}" />
                                     @error('description')
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
